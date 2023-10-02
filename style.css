@@ -1,0 +1,117 @@
+body {
+  background-color: #94dedb;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+* {
+  border: 1px solid blue;
+}
+
+.start-game .logo-holder {
+  text-align: center;
+}
+.start-game .logo-holder .logo {
+  color: #f1600c;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 900;
+  font-size: 100px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.start-game .logo-holder .play-button {
+  display: inline-block;
+  background-color: #ff4571;
+  border: 4px solid #fff;
+  border-radius: 100px;
+  color: #fff;
+  width: 200px;
+  height: 56px;
+  font-size: 42px;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 56px;
+  text-decoration: none;
+}
+
+.start-game .logo-holder .play-button:hover {
+  background-color: #ff5f84;
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: normal;
+  align-content: stretch;
+}
+
+#stats {
+  display: block;
+  flex-grow: 1;
+}
+
+#game-screen {
+  display: flex;
+  flex-grow: 7;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: flex-end;
+}
+
+#upperGame {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: flex-end;
+  height: 200px;
+}
+
+#dragonBox {
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+}
+
+#empty {
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+}
+
+#lowerGame {
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  overflow: hidden;
+  height: 200px;
+}
+
+.column {
+  width: 100px;
+  height: 300px;
+  background-color: blue;
+  bottom: 100px;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}

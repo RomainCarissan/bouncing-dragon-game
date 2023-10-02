@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bouncing Dragon Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section id="start-game" class="start-game game-full-flex">
+        <div id="game-intro">
+          <div class="logo-holder">
+            <p class="logo">Bouncing Dragon</p>
+            <a class="play-button" id="start-button" href="#">Play</a>
+          </div>
+          <!--<img src="images\dragon colors\blue dragon.svg" alt="">-->
+        </div>
+      </section>
+
+      <section id="game-container" class="hidden">
+        <div id="stats">
+          <p>Score: <span id="score">0</span></p>
+        </div>
+        <div id="game-screen">
+          <div id="upperGame">
+            <div id="dragonBox">dragonBox</div>
+            <div id="empty"></div>
+          </div>
+          <div id="lowerGame">Tower</div>
+        </div>
+      </section>
+
+      <section id="game-end" class="hidden">
+        <div>
+          <h1>BDG</h1>
+
+          <div class="final-score"></div>
+          <div class="result"></div>
+
+          <div>
+            <button id="restart-button">Restart</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
