@@ -351,6 +351,10 @@ startButton.addEventListener("click", function () {
   startGame();
 });
 
+restartButton.addEventListener("click", function () {
+  restartGame();
+});
+
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
     game.dragon.changeColor();
@@ -375,4 +379,30 @@ function gameIsOver() {
   endScreen.classList.remove("hidden");
   finalScore.innerHTML = game.score;
   console.log(game.score);
+}
+
+function restartGame() {
+  while (game.obstacles.length > 0) {
+    const obstacle = game.obstacles.pop();
+    //gameContainer.removeChild(obstacle.element);   //remove the existing tower img
+  }
+
+  game.score = 0;
+  game.counter = 0;
+  game.towerCounter = 1;
+  game.canBeHit = true;
+  game.pressedKeys.space = false;
+
+  endScreen.classList.add("hidden");
+
+  function animate() {
+    game.gameIsOver = false;
+    game.dragon.element.style.cssText -= "display : none";
+  }
+
+  // Start a new game
+  game.dragon.clearColorClasses();
+  animate(); // Restart the game animation loop
+  game.incrementScore();
+  startGame();
 }

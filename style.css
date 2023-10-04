@@ -1,12 +1,14 @@
 body {
-  background-color: #94dedb;
+  background-color: #65aac3;
   margin: 0;
+  bottom: 0;
   font-family: "Roboto", sans-serif;
 }
+/*
 * {
   border: 1px solid blue;
 }
-
+*/
 html {
   height: 100%;
 }
@@ -18,22 +20,29 @@ main {
   height: 100%;
 }
 
-.start-game .logo-holder {
+#game-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#game-intro .logo-holder {
   text-align: center;
 }
-.start-game .logo-holder .logo {
-  color: #f1600c;
+#game-intro .logo-holder .logo {
+  color: #47910f;
   text-transform: uppercase;
   text-align: center;
   font-weight: 900;
   font-size: 100px;
   margin-top: 10px;
-  margin-bottom: 4px;
+  margin-bottom: 84px;
 }
 
-.start-game .logo-holder .play-button {
+#game-intro .logo-holder .play-button {
   display: inline-block;
-  background-color: #ff4571;
+  background-color: #4b5380;
   border: 4px solid #fff;
   border-radius: 100px;
   color: #fff;
@@ -47,8 +56,8 @@ main {
   text-decoration: none;
 }
 
-.start-game .logo-holder .play-button:hover {
-  background-color: #ff5f84;
+#game-intro .logo-holder .play-button:hover {
+  background-color: #646a8e;
 }
 
 #game-container {
@@ -59,11 +68,26 @@ main {
   align-items: normal;
   align-content: stretch;
   height: 100%;
+  background-image: url("./images/background-sky.png");
+  background-size: cover; /* Ajustez la taille de l'image en fonction de vos besoins */
+  background-repeat: no-repeat;
 }
 
 #stats {
   display: block;
   flex-grow: 1;
+  height: 82px;
+}
+.logoHolder {
+  height: 80px;
+}
+
+#score {
+  font-size: 64px;
+  font-weight: 800;
+  color: #ffe345;
+  letter-spacing: -8px;
+  margin-left: 50px;
 }
 
 #game-screen {
@@ -116,7 +140,6 @@ main {
   align-self: auto;
   overflow: hidden;
   height: 350px;
-  top: 20px;
 }
 
 .hidden {
@@ -137,6 +160,7 @@ main {
 
 .tower {
   position: absolute;
+  top: 65px;
   width: 100px;
   height: 300px;
   left: 0;
@@ -232,9 +256,9 @@ main {
   transform: translate(-50%, -50%);
   z-index: 9999; /* Set a high z-index to ensure it appears above other elements */
   justify-content: center;
-  background-color: #4c4660;
+  background-color: #2162cb9a;
   width: 433px;
-  height: 386px;
+  height: 627px;
   border-radius: 38px;
   text-align: center;
 }
@@ -242,10 +266,14 @@ main {
 #game-end h1 {
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: -0.1em;
-  margin-top: 20px;
+  letter-spacing: -0.08em;
+  margin-top: 40px;
   margin-bottom: 4px;
   font-size: 64px;
+}
+
+#game-end .deadDragon {
+  height: 250px;
 }
 
 #game-end .final-score {
@@ -254,6 +282,7 @@ main {
   font-size: 130px;
   letter-spacing: -6px;
   line-height: 110px;
+  margin-bottom: 23px;
 }
 
 #game-end .result {
@@ -284,7 +313,7 @@ main {
 }
 
 #game-end #restart-button:hover {
-  background-color: lighten(#ff4571, 5%);
+  background-color: lighten(#646a8e, 5%);
 }
 
 @keyframes bounce {
