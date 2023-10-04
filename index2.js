@@ -35,14 +35,3 @@ for (let i = 0; i < this.columns.length; i++) {
     }
   }
 } */
-
-const colors = [red, bleu, yellow];
-
-let counter = 0;
-function Getcolor() {
-  const currentColor = [counter % colors.length];
-  counter++;
-  return colors;
-}
-
-console.log(Getcolor());
