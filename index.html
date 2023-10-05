@@ -12,7 +12,11 @@
       <section id="start-game" class="start-game game-full-flex">
         <div id="game-intro">
           <div class="logo-holder">
-            <img src="images/logo-wing.svg" alt="left wing" />
+            <img
+              id="logo-dragon"
+              src="images/dragon-logo2.png"
+              alt="game dragon logo"
+            />
             <p class="logo">Bouncing Billy</p>
             <a class="play-button" id="start-button" href="#">Play</a>
           </div>
@@ -20,10 +24,16 @@
       </section>
 
       <section id="game-container" class="hidden">
+        <audio
+          id="sound-effect-game-container"
+          src="sounds/gamepaly-sound.mp3"
+          loop
+        ></audio>
         <div id="stats">
           <p class="logoHolder"><span id="score">0</span></p>
         </div>
         <div id="game-screen">
+          <audio id="sound-effect-roof" src="sounds/roof-sounds.mp3"></audio>
           <div id="upperGame">
             <div id="dragonBox">
               <div class="test"></div>
@@ -1200,7 +1210,7 @@
 
       <section id="game-end" class="hidden">
         <div>
-          <h1>R I P</h1>
+          <h1>Boby has crashed...</h1>
           <img
             class="deadDragon"
             src="./images/dragon-colors/gost-dragon-2.png"
@@ -1213,6 +1223,14 @@
             <a id="restart-button" class="play-again" href="#">Play Again</a>
           </div>
         </div>
+        <audio
+          id="sound-effect-low-score"
+          src="sounds/low-score-score.mp3"
+        ></audio>
+        <audio
+          id="sound-effect-high-score"
+          src="sounds/high-score-sound.mp3"
+        ></audio>
       </section>
     </main>
 

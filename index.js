@@ -15,7 +15,7 @@ class Game {
       this.imgElement.querySelector(".rayures-lumiere");
     this.ombresElement = this.imgElement.querySelector(".ombres");
 
-    this.dragon = new Dragon(); //
+    this.dragon = new Dragon();
     this.gameIsOver = false;
 
     this.counter = 0;
@@ -44,7 +44,7 @@ class Game {
 
   gameLoop() {
     if (this.gameIsOver) {
-      cancelAnimationFrame(this.animationId); // Stop the animation loop when the game is over
+      cancelAnimationFrame(this.animationId); // It stops the animation loop when the game is over
       this.dragon.element.style.display = "none";
       return;
     }
@@ -78,6 +78,7 @@ class Game {
           gameIsOver();
         } else {
           this.incrementScore();
+          roofSound();
           this.canBeHit = false;
           setTimeout(() => {
             this.canBeHit = true;
@@ -340,7 +341,7 @@ class Dragon {
   }
 }
 
-//script
+//***************** S C R I P T *********************
 
 const startButton = document.getElementById("start-button");
 const restartButton = document.getElementById("restart-button");
@@ -351,38 +352,39 @@ const emptyContainer = document.getElementById("empty");
 
 const finalScore = document.querySelector(".final-score");
 const record = document.querySelector(".best-score");
-
 let bestScore = 0;
 const bestScoreMessage = "New Record!";
 
 let game = null;
 let colorsCounter = 0;
 
+const soundGameContainer = document.getElementById(
+  "sound-effect-game-container"
+);
+const soundHighScore = document.getElementById("sound-effect-high-score");
+const soundLowScore = document.getElementById("sound-effect-low-score");
+const soundRoof = document.getElementById("sound-effect-roof");
+
+//*********EVENT LISTENER */
 startButton.addEventListener("click", function () {
   startGame();
 });
-
 restartButton.addEventListener("click", function () {
   restartGame();
 });
-
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
     game.dragon.changeColor();
   }
 });
 
-// document.addEventListener("keyup", (event) => {
-//   if (event.code === "Space") {
-//     game.pressedKeys.space = false;
-//   }
-// });
+//***********GENERAL FUNCTIONS */
 
 function startGame() {
   console.log("start game");
   gameContainer.classList.remove("hidden");
   mainScreen.classList.add("hidden");
-
+  soundGameplay();
   game = new Game();
   // game.start()
 
@@ -398,15 +400,20 @@ function gameIsOver() {
   endScreen.classList.remove("hidden");
   finalScore.innerHTML = game.score;
   compet();
+  soundGameContainer.pause();
   console.log(game.score);
 }
 
 function compet() {
   if (game.score < bestScore) {
     record.innerHTML = "Best Score : " + bestScore;
+    lowScoreSound();
+  } else if (game.score === bestScore) {
+    lowScoreSound();
   } else if (game.score > bestScore) {
     bestScore = game.score;
     record.innerHTML = bestScoreMessage;
+    HighScoreSound();
   }
 }
 
@@ -430,9 +437,31 @@ function restartGame() {
     game.dragon.element.style.cssText -= "display : none";
   }
 
-  // Start a new game
-  game.dragon.clearColorClasses();
+  game.dragon.clearColorClasses(); // Start a new game
   animate(); // Restart the game animation loop
   game.incrementScore();
+  soundHighScore.pause;
+  soundLowScore.pause;
   startGame();
+}
+
+//***********SOUNDS*** */
+
+function soundGameplay() {
+  soundGameContainer.currentTime = 0;
+  soundGameContainer.play();
+  soundGameContainer.volume = 0.7;
+}
+function lowScoreSound() {
+  soundLowScore.currentTime = 0;
+  soundLowScore.play();
+}
+function HighScoreSound() {
+  soundHighScore.currentTime = 0;
+  soundHighScore.play();
+}
+function roofSound() {
+  soundRoof.currentTime = 0;
+  soundRoof.play();
+  soundRoof.volume = 0.5;
 }
