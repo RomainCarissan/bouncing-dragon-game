@@ -4,11 +4,11 @@ body {
   bottom: 0;
   font-family: "Roboto", sans-serif;
 }
-/*
+
 * {
   border: 1px solid blue;
 }
-*/
+
 html {
   height: 100%;
 }
@@ -31,13 +31,13 @@ main {
   text-align: center;
 }
 #game-intro .logo-holder .logo {
-  color: #47910f;
+  color: #ffffff;
   text-transform: uppercase;
   text-align: center;
   font-weight: 900;
   font-size: 100px;
-  margin-top: 10px;
-  margin-bottom: 84px;
+  margin-top: -10px;
+  margin-bottom: 75px;
 }
 
 #game-intro .logo-holder .play-button {
@@ -98,6 +98,9 @@ main {
   justify-content: space-between;
   align-items: stretch;
   align-content: flex-end;
+  background-image: url("./images/grass-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #upperGame {
@@ -130,6 +133,14 @@ main {
   flex-basis: auto;
   align-self: auto;
   order: 1;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0px 2px 4px #131b50;
+  margin-top: 140px;
+  margin-left: 140px;
 }
 
 #lowerGame {
@@ -151,11 +162,30 @@ main {
   min-height: 300px;
   max-width: 300px;
   max-height: 300px;
-  animation: bounce 2.4s;
+  animation: bounce 1.6s;
   transform: translateY(0px);
   animation-iteration-count: infinite;
   position: absolute;
   margin: 0 15%;
+  z-index: 100;
+}
+.test {
+  position: absolute;
+  width: 150px;
+  min-height: 300px;
+  animation: bounce 1.6s infinite;
+  transform: translateY(0px);
+  outline: 2px solid red;
+  left: calc(15% + 75px);
+}
+
+.test-tower {
+  position: absolute;
+  top: 165px;
+  width: 60px;
+  height: 300px;
+  left: calc(15% + 95px);
+  outline: 2px solid red;
 }
 
 .tower {
@@ -197,6 +227,7 @@ main {
   fill: #b3bf45;
 }
 
+/* dragon colors*/
 .bodyColor.redVersion {
   fill: #dd3737;
 }
@@ -206,7 +237,7 @@ main {
 .ombresColor.redVersion {
   fill: #bdb481;
 }
-.RayuresColor.redVersion {
+.rayuresColor.redVersion {
   fill: #ee8c18;
 }
 
@@ -219,7 +250,7 @@ main {
 .ombresColor.blueVersion {
   fill: #6ccdcd;
 }
-.RayuresColor.blueVersion {
+.rayuresColor.blueVersion {
   fill: #18a1ee;
 }
 
@@ -232,7 +263,7 @@ main {
 .ombresColor.yellowVersion {
   fill: #bcab52;
 }
-.RayuresColor.yellowVersion {
+.rayuresColor.yellowVersion {
   fill: #c3a713;
 }
 
@@ -245,7 +276,7 @@ main {
 .ombresColor.greenVersion {
   fill: #c6caab;
 }
-.RayuresColor.greenVersion {
+.rayuresColor.greenVersion {
   fill: #87a655;
 }
 
@@ -274,6 +305,7 @@ main {
 
 #game-end .deadDragon {
   height: 250px;
+  margin-bottom: -20px;
 }
 
 #game-end .final-score {
@@ -282,14 +314,15 @@ main {
   font-size: 130px;
   letter-spacing: -6px;
   line-height: 110px;
-  margin-bottom: 23px;
+  margin-bottom: 25px;
 }
 
-#game-end .result {
-  color: #ff4571;
+#game-end .best-score {
+  color: #ffe345;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 #game-end h4 {
@@ -298,7 +331,7 @@ main {
 }
 
 #game-end #restart-button {
-  background-color: #ff4571;
+  background-color: #4b5380;
   border: 2px solid #fff;
   color: #fff;
   text-decoration: none;

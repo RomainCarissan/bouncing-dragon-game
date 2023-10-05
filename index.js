@@ -23,25 +23,29 @@ class Game {
 
     this.animationId = null;
 
-    this.towerCounter = 1;
+    this.towerCounter = 0;
     this.obstacles = [];
 
     this.canBeHit = true;
     this.pressedKeys = {
       space: false,
     };
-
+    this.dragon.currentColor = "blueVersion";
     this.start();
+    this.dragon.updateDragon();
   }
 
   start() {
-    this.gameLoop();
+    setTimeout(() => {
+      this.gameLoop();
+    }, 2750);
+    this.dragon.updateDragon("blueVersion");
   }
 
   gameLoop() {
     if (this.gameIsOver) {
       cancelAnimationFrame(this.animationId); // Stop the animation loop when the game is over
-      this.dragon.element.style.cssText += "display : none";
+      this.dragon.element.style.display = "none";
       return;
     }
 
@@ -51,7 +55,7 @@ class Game {
   }
 
   update() {
-    if (this.counter % 140 === 0) {
+    if (this.counter % 96 === 0) {
       this.obstacles.push(new Obstacle(this.lowerGame, this.towerCounter));
       this.towerCounter++;
       this.counter = 0;
@@ -60,13 +64,13 @@ class Game {
     for (const obstacle of this.obstacles) {
       //   if (this.obstacles.length >= 2) {
       //     console.log(obstacle);
-      //     debugger;
+      //debugger;
       //   }
       obstacle.move();
       obstacle.updatePosition();
       if (this.isColliding(obstacle) && this.canBeHit) {
-        /* debugger;
-        console.log("Collide");
+        //debugger;
+        /*console.log("Collide");
         console.log(obstacle.colorClass, this.dragon.currentColor); */
         if (obstacle.colorClass !== this.dragon.currentColor) {
           this.gameIsOver = true;
@@ -88,12 +92,13 @@ class Game {
     const dragonBounding = this.dragon.element.getBoundingClientRect();
 
     const isInX =
-      towerBounding.right - 15 > dragonBounding.left + 100 &&
-      towerBounding.left + 15 < dragonBounding.right - 100;
-    const isInY = towerBounding.top + 15 > dragonBounding.bottom - 100; //> = good
-    /* if (isInY) {
+      towerBounding.right - 20 > dragonBounding.left + 75 &&
+      towerBounding.left + 20 < dragonBounding.right - 75;
+    const isInY = towerBounding.top + 100 < dragonBounding.bottom; //> = good
+    console.log(isInY);
+    if (isInY && isInX) {
       console.log(dragonBounding, towerBounding);
-    }*/
+    }
     return isInX && isInY;
   }
 
@@ -203,7 +208,7 @@ class Obstacle {
   }
 
   move() {
-    this.left -= 2;
+    this.left -= 7.5;
     //console.log(this.left);
   }
 
@@ -254,6 +259,7 @@ class Dragon {
     this.currentColor = "blueVersion";
     this.colorVersions = [
       "redVersion",
+      "greenVersion",
       "blueVersion",
       "yellowVersion",
       "greenVersion",
@@ -341,8 +347,13 @@ const restartButton = document.getElementById("restart-button");
 const mainScreen = document.getElementById("game-intro");
 const gameContainer = document.getElementById("game-container");
 const endScreen = document.getElementById("game-end");
+const emptyContainer = document.getElementById("empty");
 
 const finalScore = document.querySelector(".final-score");
+const record = document.querySelector(".best-score");
+
+let bestScore = 0;
+const bestScoreMessage = "New Record!";
 
 let game = null;
 let colorsCounter = 0;
@@ -371,27 +382,46 @@ function startGame() {
   console.log("start game");
   gameContainer.classList.remove("hidden");
   mainScreen.classList.add("hidden");
+
   game = new Game();
   // game.start()
+
+  setTimeout(() => {
+    if (emptyContainer) {
+      emptyContainer.style.transition = "font-size 0.2s ease-in-out";
+      emptyContainer.style.fontSize = "0px";
+    }
+  }, 2700);
 }
 
 function gameIsOver() {
   endScreen.classList.remove("hidden");
   finalScore.innerHTML = game.score;
+  compet();
   console.log(game.score);
+}
+
+function compet() {
+  if (game.score < bestScore) {
+    record.innerHTML = "Best Score : " + bestScore;
+  } else if (game.score > bestScore) {
+    bestScore = game.score;
+    record.innerHTML = bestScoreMessage;
+  }
 }
 
 function restartGame() {
   while (game.obstacles.length > 0) {
     const obstacle = game.obstacles.pop();
-    //gameContainer.removeChild(obstacle.element);   //remove the existing tower img
+    game.lowerGame.removeChild(obstacle.element);
   }
 
-  game.score = 0;
+  game.score = -1;
   game.counter = 0;
-  game.towerCounter = 1;
+  game.towerCounter = 0;
   game.canBeHit = true;
   game.pressedKeys.space = false;
+  emptyContainer.style.fontSize = "18px";
 
   endScreen.classList.add("hidden");
 
