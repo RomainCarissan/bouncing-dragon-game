@@ -157,12 +157,12 @@ class Obstacle {
 
     this.colorClass = colorVersions[randomNum];
 
+    this.updateRoof(this.colorClass);
     /* if (colorClass) {
         // Assign the color class to the tower elements
         rightRoofElement.setAttribute("class", `rightRoof ${colorClass}`);
         leftRoofElement.setAttribute("class", `leftRoof ${colorClass}`);
       } */
-    this.updateRoof(this.colorClass);
     // switch (colorClass) {
     //   case "redVersion":
     //     this.updateRoof("redVersion");
@@ -335,7 +335,6 @@ class Dragon {
     const isInY =
       obsBounding.bottom > carBounding.top &&
       obsBounding.top < carBounding.bottom;
-
     // console.log(isInX, isInY)
     return isInX && isInY;
   }

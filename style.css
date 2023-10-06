@@ -181,14 +181,14 @@ main {
   transform: translateY(0px);
   outline: 2px solid red;
   left: calc(15% + 75px);
-} */
+}
 
-/* .test-tower {
+.test-tower {
   position: absolute;
   top: 165px;
   width: 60px;
   height: 300px;
-  left: calc(15% + 95px);
+  left: calc(15% + 150px);
   outline: 2px solid red;
 } */
 
